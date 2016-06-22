@@ -18,7 +18,7 @@ import android.widget.Toast;
 public class MainActivity extends AppCompatActivity implements View.OnClickListener {
 
     private Contact contact = new Contact("Olvin A. Garcia","Grupo Visión", "+504 9512-0158",
-            "agarcia@grupovision.org","olvingarcia","olvingarcia2a","@olvingarcia","img_olvin");
+            "agarcia@grupovision.org","olvingarcia","olvingarcia2a","olvingarcia2a","img_olvin");
 
     private ImageView imgView;
     private TextView txtName, txtCompany, txtTelephone, txtEmail, txtGithub, txtFacebook, txtTwitter;
@@ -72,7 +72,7 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
         switch (view.getId())
         {
             case R.id.btnPhone:
-                intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ contact.getTelephone()));
+                intent = new Intent(Intent.ACTION_CALL, Uri.parse("tel:"+ txtTelephone.getText()));
 
                 if (getApplicationContext().getPackageManager().hasSystemFeature(PackageManager.FEATURE_TELEPHONY))
                 {
@@ -92,14 +92,14 @@ public class MainActivity extends AppCompatActivity implements View.OnClickListe
 
             case  R.id.btnEmail:
 
-                intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:agarcia@grupovision.org"));
+                intent = new Intent(Intent.ACTION_SENDTO, Uri.parse("mailto:"+ txtEmail.getText()));
                 intent.putExtra(Intent.EXTRA_SUBJECT,"Test");
                 intent.putExtra(Intent.EXTRA_TEXT,"Este es un correo de prueba");
                 startActivity(intent);
                 break;
 
             case R.id.btnTwitter:
-                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name=ogarcia2a"));
+                intent = new Intent(Intent.ACTION_VIEW, Uri.parse("twitter://user?screen_name="+ txtTwitter.getText()));
                 try
                 {
                     startActivity(intent);
